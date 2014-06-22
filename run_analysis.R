@@ -15,6 +15,9 @@ TestSubset<- XTest[,grep("mean|std", colnames(XTest))]
 
 TestData <- cbind(subTest, YTest, TestSubset)
 
+names(activity)[names(activity) == "V1"] <- "ActivityID"
+names(activity)[names(activity) == "V2"] <- "Activity"
+
 TestDataMerged <- merge(TestData, activity, by.x="ActivityID", by.y="ActivityID", all=FALSE)
 
 
@@ -46,7 +49,7 @@ BigData <- BigData[order(BigData$SubjectID),]
 
 #Summarizing
 attach(BigData)
-Tidy_Data <- aggregate(BigData, by=list(SubjectID,ActivityID), FUN=mean, na.rm=TRUE)
+Tidy_Data <- aggregate(BigData, by=list(SubjectID,Activity), FUN=mean, na.rm=TRUE)
 Tidy_Data$SubjectID <- NULL
 Tidy_Data$ActivityID <- NULL
 Tidy_Data$Activity <- NULL
@@ -54,4 +57,4 @@ Tidy_Data$Activity <- NULL
 names(Tidy_Data)[names(Tidy_Data) == "Group.1"] <- "Subject"
 names(Tidy_Data)[names(Tidy_Data) == "Group.2"] <- "Activity"
 
-
+View(Tidy_Data)
