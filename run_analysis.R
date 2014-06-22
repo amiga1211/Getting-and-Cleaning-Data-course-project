@@ -1,9 +1,9 @@
 #Test data processing
-subTest <- read.table("./Project/Test/subject_test.txt")
-XTest <- read.table("./Project/Test/X_test.txt")
-YTest <- read.table("./Project/Test/y_test.txt")
-features <- read.table("./Project/features.txt")
-activity <- read.table("./Project/activity_labels.txt")
+subTest <- read.table("./subject_test.txt")
+XTest <- read.table("./X_test.txt")
+YTest <- read.table("./y_test.txt")
+features <- read.table("./features.txt")
+activity <- read.table("./activity_labels.txt")
 
 names(XTest) <- features$V2
 
@@ -19,9 +19,9 @@ TestDataMerged <- merge(TestData, activity, by.x="ActivityID", by.y="ActivityID"
 
 
 # Train data processing
-subTrain <- read.table("./Project/Train/subject_train.txt")
-XTrain <- read.table("./Project/Train/X_train.txt")
-YTrain <- read.table("./Project/Train/y_train.txt")
+subTrain <- read.table("./subject_train.txt")
+XTrain <- read.table("./X_train.txt")
+YTrain <- read.table("./y_train.txt")
 
 names(XTrain) <- features$V2
 
